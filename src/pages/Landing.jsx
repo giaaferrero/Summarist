@@ -38,6 +38,30 @@ const Landing = () => {
           />
         </div>
       </section>
+
+      <section id="features">
+  <div className="section__title">Understand books in few minutes</div>
+
+  <div className="features__wrapper">
+    <div className="feature">
+      <div className="feature__icon">📄</div>
+      <h3>Read or listen</h3>
+      <p>Save time by getting the core ideas from the best books.</p>
+    </div>
+
+    <div className="feature">
+      <div className="feature__icon">💡</div>
+      <h3>Find your next read</h3>
+      <p>Explore book lists and personalized recommendations.</p>
+    </div>
+
+    <div className="feature">
+      <div className="feature__icon">🎧</div>
+      <h3>Briefcasts</h3>
+      <p>Gain valuable insights from briefcasts</p>
+    </div>
+  </div>
+</section>
     </>
   );
 };
