@@ -48,6 +48,7 @@ const Landing = () => {
       <h3>Read or listen</h3>
       <p>Save time by getting the core ideas from the best books.</p>
     </div>
+    
 
     <div className="feature">
       <div className="feature__icon">💡</div>
@@ -59,6 +60,33 @@ const Landing = () => {
       <div className="feature__icon">🎧</div>
       <h3>Briefcasts</h3>
       <p>Gain valuable insights from briefcasts</p>
+    </div>
+  </div>
+</section>
+<section id="statistics">
+  <div className="statistics__wrapper">
+    <div className="statistics__content">
+      <h2>Enhance your knowledge</h2>
+      <h2>Achieve greater success</h2>
+      <h2>Improve your health</h2>
+      <h2>Develop better parenting skills</h2>
+      <h2>Increase happiness</h2>
+      <h2>Be the best version of yourself!</h2>
+    </div>
+
+    <div className="statistics__box">
+      <p>
+        <span>93%</span> of Summarist members significantly increase reading
+        frequency.
+      </p>
+
+      <p>
+        <span>96%</span> of Summarist members establish better habits.
+      </p>
+
+      <p>
+        <span>90%</span> have made significant positive change to their lives.
+      </p>
     </div>
   </div>
 </section>
