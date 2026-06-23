@@ -148,3 +148,9 @@ nav {
   font-weight: 700;
   margin-right: 8px;
 }
+.statistics__content--right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

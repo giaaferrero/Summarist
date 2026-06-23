@@ -90,6 +90,35 @@ const Landing = () => {
     </div>
   </div>
 </section>
+<section id="statistics">
+  <div className="statistics__wrapper">
+    <div className="statistics__box">
+      <p>
+        <span>91%</span> of Summarist members report feeling more productive
+        after incorporating the service into their daily routine.
+      </p>
+
+      <p>
+        <span>94%</span> of Summarist members have noticed an improvement in
+        their overall comprehension and retention of information.
+      </p>
+
+      <p>
+        <span>88%</span> of Summarist members feel more informed about current
+        events and industry trends since using the platform.
+      </p>
+    </div>
+
+    <div className="statistics__content statistics__content--right">
+      <h2>Expand your learning</h2>
+      <h2>Accomplish your goals</h2>
+      <h2>Strengthen your vitality</h2>
+      <h2>Become a better caregiver</h2>
+      <h2>Improve your mood</h2>
+      <h2>Maximize your abilities</h2>
+    </div>
+  </div>
+</section>
     </>
   );
 };
