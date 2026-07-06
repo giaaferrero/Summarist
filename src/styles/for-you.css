@@ -1,0 +1,111 @@
+.for-you__page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #f7f7f7;
+  border-right: 1px solid #e5e7eb;
+}
+
+.for-you__main {
+  flex: 1;
+  padding: 32px;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.sidebar__logo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar__link {
+  text-decoration: none;
+  color: #032b41;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sidebar__link--disabled {
+  color: #777;
+  cursor: default;
+}
+.search__bar {
+  margin-bottom: 32px;
+}
+
+.search__input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.search__input:focus {
+  border-color: #2bd97c;
+}
+.books__row {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.book-card {
+  width: 180px;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.book-card__image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-card__title {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.book-card__author {
+  font-size: 14px;
+  color: #6b7280;
+}
+.book-card__info {
+  padding-top: 8px;
+}
+
+.book-card__subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.book-card__details {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+}

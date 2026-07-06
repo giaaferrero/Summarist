@@ -1,8 +1,11 @@
 import "../styles/landing.css";
 import landingImg from "../assets/home/landing.png";
 import logoImg from "../assets/home/logo.png";
+import { useAuth } from "../context/AuthContext";
 
 const Landing = () => {
+  const { openAuthModal } = useAuth();
+
   return (
     <>
       <nav className="nav">
@@ -15,7 +18,9 @@ const Landing = () => {
             <li className="nav__list nav__list--mobile">About</li>
             <li className="nav__list nav__list--mobile">Contact</li>
             <li className="nav__list nav__list--login">
-              <a href="/for-you">Login</a>
+              <button onClick={openAuthModal} className="nav__login--btn">
+  Login
+</button>
             </li>
           </ul>
         </div>
@@ -36,9 +41,9 @@ const Landing = () => {
                   time to read, and even people who don’t like to read.
                 </p>
 
-                <a href="/for-you" className="btn home__cta--btn">
-                  Login
-                </a>
+                <button onClick={openAuthModal} className="btn home__cta--btn">
+                Login
+              </button>
               </div>
 
               <figure className="landing__image--mask">
@@ -188,9 +193,9 @@ const Landing = () => {
                 </div>
 
                 <div className="reviews__btn--wrapper">
-                  <a href="/for-you" className="btn home__cta--btn">
-                    Login
-                  </a>
+                  <button onClick={openAuthModal} className="btn home__cta--btn">
+                  Login
+              </button>
                 </div>
               </div>
             </div>

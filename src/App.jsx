@@ -7,6 +7,8 @@ import Player from "./pages/Player";
 import Settings from "./pages/Settings";
 import ChoosePlan from "./pages/ChoosePlan";
 
+import AuthModal from "./components/AuthModal";
+
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/choose-plan" element={<ChoosePlan />} />
       </Routes>
+      <AuthModal />
     </BrowserRouter>
   );
 }
