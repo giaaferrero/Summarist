@@ -1,0 +1,29 @@
+.search-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.search-page__main {
+  flex: 1;
+  padding: 48px;
+  color: #032b41;
+}
+
+.search-page__main h1 {
+  margin-bottom: 24px;
+}
+
+.search-page__main input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 28px;
+}
+
+.search-page__main input:focus {
+  border-color: #2bd97c;
+}

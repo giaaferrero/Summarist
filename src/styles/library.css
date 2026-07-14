@@ -1,0 +1,14 @@
+.library {
+  display: flex;
+  min-height: 100vh;
+}
+
+.library__main {
+  flex: 1;
+  padding: 48px;
+  color: #032b41;
+}
+
+.library__main h1 {
+  margin-bottom: 28px;
+}

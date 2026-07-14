@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Sidebar() {
+  const { currentUser, logout, openAuthModal } = useAuth();
+
+  async function handleLogout() {
+    await logout();
+  }
+
   return (
     <aside className="sidebar">
-      <div className="sidebar__logo">Summarist</div>
+      <Link to="/for-you" className="sidebar__logo">
+        Summarist
+      </Link>
 
       <nav className="sidebar__nav">
         <Link to="/for-you" className="sidebar__link">
@@ -18,9 +27,9 @@ export default function Sidebar() {
           Highlights
         </span>
 
-        <span className="sidebar__link sidebar__link--disabled">
+        <Link to="/search" className="sidebar__link">
           Search
-        </span>
+        </Link>
 
         <Link to="/settings" className="sidebar__link">
           Settings
@@ -29,6 +38,22 @@ export default function Sidebar() {
         <span className="sidebar__link sidebar__link--disabled">
           Help & Support
         </span>
+
+        {currentUser ? (
+          <button
+            className="sidebar__link sidebar__button"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            className="sidebar__link sidebar__button"
+            onClick={openAuthModal}
+          >
+            Login
+          </button>
+        )}
       </nav>
     </aside>
   );

@@ -6,6 +6,8 @@ import BookDetails from "./pages/BookDetails";
 import Player from "./pages/Player";
 import Settings from "./pages/Settings";
 import ChoosePlan from "./pages/ChoosePlan";
+import Search from "./pages/Search";
+import Library from "./pages/Library";
 
 import AuthModal from "./components/AuthModal";
 
@@ -19,7 +21,10 @@ function App() {
         <Route path="/player/:id" element={<Player />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/choose-plan" element={<ChoosePlan />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/library" element={<Library />} />
       </Routes>
+
       <AuthModal />
     </BrowserRouter>
   );

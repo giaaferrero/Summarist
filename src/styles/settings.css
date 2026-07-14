@@ -1,0 +1,45 @@
+.settings {
+  display: flex;
+  min-height: 100vh;
+}
+
+.settings__main {
+  flex: 1;
+  padding: 48px;
+  color: #032b41;
+}
+
+.settings__main h1 {
+  margin-bottom: 40px;
+}
+
+.settings__section {
+  margin-bottom: 36px;
+}
+
+.settings__section h2 {
+  margin-bottom: 16px;
+}
+
+.settings__box {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 500px;
+  background: white;
+}
+
+.settings__logout {
+  margin-top: 24px;
+  background: #032b41;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 14px 32px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.settings__logout:hover {
+  opacity: 0.9;
+}

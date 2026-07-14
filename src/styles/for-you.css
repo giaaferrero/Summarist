@@ -109,3 +109,17 @@
   transform: translateY(-4px);
   transition: 0.2s ease;
 }
+.for-you__loading {
+  margin-top: 24px;
+}
+
+.skeleton__books {
+  display: flex;
+  gap: 24px;
+  margin: 28px 0 40px;
+}
+
+.skeleton__book {
+  width: 180px;
+  height: 260px;
+}

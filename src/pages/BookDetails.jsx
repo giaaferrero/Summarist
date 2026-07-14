@@ -5,7 +5,9 @@ import "../styles/book-details.css";
 const BookDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [book, setBook] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     async function getBook() {
@@ -15,14 +17,50 @@ const BookDetails = () => {
 
       const data = await response.json();
       setBook(data);
+
+      const savedBooks =
+        JSON.parse(localStorage.getItem("savedBooks")) || [];
+
+      const bookAlreadySaved = savedBooks.some(
+        (savedBook) => savedBook.id === data.id
+      );
+
+      setIsSaved(bookAlreadySaved);
     }
 
     getBook();
   }, [id]);
 
-  if (!book) {
-    return <h1 className="book-details__loading">Loading...</h1>;
+  function handleSaveBook() {
+    const savedBooks =
+      JSON.parse(localStorage.getItem("savedBooks")) || [];
+
+    const bookAlreadySaved = savedBooks.some(
+      (savedBook) => savedBook.id === book.id
+    );
+
+    if (!bookAlreadySaved) {
+      const updatedBooks = [...savedBooks, book];
+
+      localStorage.setItem(
+        "savedBooks",
+        JSON.stringify(updatedBooks)
+      );
+
+      setIsSaved(true);
+    }
   }
+
+  if (!book) {
+  return (
+    <div className="book-details__loading">
+      <div className="skeleton skeleton__title"></div>
+      <div className="skeleton skeleton__text"></div>
+      <div className="skeleton skeleton__text"></div>
+      <div className="skeleton skeleton__image"></div>
+    </div>
+  );
+}
 
   return (
     <div className="book-details">
@@ -34,7 +72,10 @@ const BookDetails = () => {
           </h1>
 
           <h2>{book.author}</h2>
-          <p className="book-details__subtitle">{book.subTitle}</p>
+
+          <p className="book-details__subtitle">
+            {book.subTitle}
+          </p>
 
           <div className="book-details__stats">
             <div>⭐ {book.averageRating}</div>
@@ -59,24 +100,38 @@ const BookDetails = () => {
             </button>
           </div>
 
-          <div className="book-details__library">
-            Add title to My Library
-          </div>
+          <button
+            className="book-details__library"
+            onClick={handleSaveBook}
+            disabled={isSaved}
+          >
+            {isSaved
+              ? "Added to My Library"
+              : "Add title to My Library"}
+          </button>
 
           <h3>What’s it about?</h3>
 
           <div className="book-details__tags">
             {book.tags?.map((tag) => (
-              <span className="book-details__tag" key={tag}>
+              <span
+                className="book-details__tag"
+                key={tag}
+              >
                 {tag}
               </span>
             ))}
           </div>
 
-          <p className="book-details__description">{book.bookDescription}</p>
+          <p className="book-details__description">
+            {book.bookDescription}
+          </p>
 
           <h3>About the author</h3>
-          <p className="book-details__description">{book.authorDescription}</p>
+
+          <p className="book-details__description">
+            {book.authorDescription}
+          </p>
         </div>
 
         <div className="book-details__image--wrapper">
