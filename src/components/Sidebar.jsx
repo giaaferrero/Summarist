@@ -10,7 +10,7 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <Link to="/for-you" className="sidebar__logo">
+      <Link to="/" className="sidebar__logo">
         Summarist
       </Link>
 
