@@ -1,0 +1,201 @@
+.plan {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 24px;
+  background: #fff;
+}
+
+.plan__wrapper {
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+}
+
+.plan__title {
+  font-size: 50px;
+  font-weight: 700;
+  color: #032b41;
+  line-height: 1.2;
+}
+
+.plan__subtitle {
+  margin-top: 20px;
+  margin-bottom: 36px;
+  font-size: 24px;
+  color: #394547;
+  line-height: 1.3;
+}
+
+.plan__options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.plan__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 28px;
+  border: 4px solid #bac8ce;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.plan__option:hover {
+  border-color: #2bd97c;
+}
+
+.plan__option--active {
+  border-color: #2bd97c;
+}
+
+.plan__option--radio {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #bac8ce;
+  border-radius: 50%;
+  margin-right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plan__option--active .plan__option--radio {
+  border-color: #2bd97c;
+}
+
+.plan__option--radio-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.plan__option--active .plan__option--radio-circle {
+  background: #2bd97c;
+}
+
+.plan__option--content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.plan__option--content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #032b41;
+}
+
+.plan__option--content p {
+  font-size: 16px;
+  color: #6b757b;
+}
+
+.plan__option--badge {
+  position: absolute;
+  top: -14px;
+  right: 20px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #032b41;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.plan__separator {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6b757b;
+}
+
+.plan__button {
+  width: 100%;
+  margin-top: 28px;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2bd97c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.plan__button:hover {
+  opacity: 0.9;
+}
+
+.plan__disclaimer {
+  margin-top: 18px;
+  font-size: 16px;
+  color: #6b757b;
+}
+.plan__faq {
+  margin-top: 48px;
+  text-align: left;
+}
+
+.plan__faq--title {
+  text-align: center;
+  font-size: 32px;
+  color: #032b41;
+  margin-bottom: 24px;
+}
+
+.plan__faq--item {
+  border-bottom: 1px solid #d9e1e5;
+}
+
+.plan__faq--question {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: #032b41;
+}
+
+.plan__faq--answer {
+  padding-bottom: 20px;
+  color: #6b757b;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .plan {
+    padding: 32px 16px;
+  }
+
+  .plan__title {
+    font-size: 36px;
+  }
+
+  .plan__subtitle {
+    font-size: 20px;
+  }
+
+  .plan__option {
+    padding: 22px 18px;
+  }
+
+  .plan__option--content h3 {
+    font-size: 18px;
+  }
+
+  .plan__faq--title {
+    font-size: 28px;
+  }
+}

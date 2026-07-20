@@ -14,8 +14,12 @@ const Settings = () => {
   }, []);
 
   async function handleLogout() {
-    await logout();
-    navigate("/");
+    try {
+      await logout();
+      navigate("/");
+    } catch (error) {
+      console.error("Unable to log out:", error);
+    }
   }
 
   return (
@@ -23,32 +27,47 @@ const Settings = () => {
       <Sidebar />
 
       <main className="settings__main">
-        <h1>Settings</h1>
+        <div className="settings__content">
+          <h1>Settings</h1>
 
-        <div className="settings__section">
-          <h2>Your Account</h2>
+          <section className="settings__section">
+            <h2>Your Account</h2>
 
-          <p>Email</p>
+            <div className="settings__row">
+              <div>
+                <h3>Email</h3>
+                <p>{currentUser?.email || "Not logged in"}</p>
+              </div>
+            </div>
+          </section>
 
-          <div className="settings__box">
-            {currentUser ? currentUser.email : "Not logged in"}
-          </div>
+          <section className="settings__section">
+            <h2>Subscription</h2>
+
+            <div className="settings__row settings__subscription">
+              <div>
+                <h3>Plan</h3>
+                <p>Basic</p>
+              </div>
+
+              <button
+                type="button"
+                className="settings__upgrade"
+                onClick={() => navigate("/choose-plan")}
+              >
+                Upgrade
+              </button>
+            </div>
+          </section>
+
+          <button
+            type="button"
+            className="settings__logout"
+            onClick={handleLogout}
+          >
+            Log out
+          </button>
         </div>
-
-        <div className="settings__section">
-          <h2>Subscription</h2>
-
-          <div className="settings__box">
-            Basic Plan
-          </div>
-        </div>
-
-        <button
-          className="settings__logout"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
       </main>
     </div>
   );

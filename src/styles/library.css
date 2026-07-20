@@ -1,14 +1,136 @@
 .library {
   display: flex;
   min-height: 100vh;
+  background-color: #ffffff;
 }
 
 .library__main {
   flex: 1;
-  padding: 48px;
+  min-width: 0;
   color: #032b41;
 }
 
-.library__main h1 {
-  margin-bottom: 28px;
+.library__content {
+  width: calc(100% - 48px);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+.library__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.library__heading h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.library__heading p {
+  margin: 0;
+  color: #6b757b;
+  font-size: 15px;
+}
+
+.library__books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 28px;
+}
+
+.library__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: 90px auto 0;
+  text-align: center;
+}
+
+.library__empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+  color: #032b41;
+  background-color: #f1f6f4;
+  border-radius: 50%;
+  font-size: 36px;
+}
+
+.library__empty h2 {
+  margin: 0 0 12px;
+  font-size: 26px;
+}
+
+.library__empty p {
+  max-width: 380px;
+  margin: 0 0 24px;
+  color: #6b757b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.library__browse-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 145px;
+  padding: 12px 20px;
+  color: #ffffff;
+  background-color: #032b41;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.library__browse-button:hover {
+  background-color: #0b405c;
+}
+
+@media (max-width: 768px) {
+  .library__content {
+    width: calc(100% - 32px);
+    padding: 32px 0 100px;
+  }
+
+  .library__heading h1 {
+    font-size: 28px;
+  }
+
+  .library__books {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .library__empty {
+    margin-top: 60px;
+  }
+}
+.library__book-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.library__remove-button {
+  width: fit-content;
+  margin-top: 12px;
+  padding: 0;
+  color: #6b757b;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.library__remove-button:hover {
+  color: #032b41;
 }

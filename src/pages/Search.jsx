@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import BookCard from "../components/BookCard";
+import "../styles/search.css";
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [books, setBooks] = useState([]);
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
-  // Debounce
+  useEffect(() => {
+    document.title = "Search | Summarist";
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(search);
@@ -16,10 +20,9 @@ const Search = () => {
     return () => clearTimeout(timer);
   }, [search]);
 
-  // Search API
   useEffect(() => {
     async function searchBooks() {
-      if (debouncedSearch === "") {
+      if (debouncedSearch.trim() === "") {
         setBooks([]);
         return;
       }
@@ -29,8 +32,6 @@ const Search = () => {
       );
 
       const data = await response.json();
-
-      console.log(data);
 
       setBooks(data);
     }
@@ -43,19 +44,42 @@ const Search = () => {
       <Sidebar />
 
       <main className="search-page__main">
-        <h1>Search</h1>
+        <div className="search-page__content">
+          <h1>Search</h1>
 
-        <input
-          type="text"
-          placeholder="Search for books"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-        />
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
 
-        <div className="books__row">
-          {books.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
+          {search === "" ? (
+            <div className="search-placeholder">
+              <h2>Discover your next read</h2>
+
+              <p>
+                Search thousands of book summaries by title or author.
+              </p>
+            </div>
+          ) : (
+            <>
+              <h2 className="results-title">
+                {books.length} Result{books.length !== 1 && "s"}
+              </h2>
+
+              <div className="books__row">
+                {books.map((book) => (
+                  <BookCard
+                    key={book.id}
+                    book={book}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </main>
     </div>
