@@ -13,7 +13,7 @@ import AuthModal from "./components/AuthModal";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Summarist">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/for-you" element={<ForYou />} />
