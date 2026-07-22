@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "../styles/sidebar.css";
@@ -61,14 +62,13 @@ const LoginIcon = () => (
   </svg>
 );
 
-const SidebarLink = ({ to, icon, children }) => {
+const SidebarLink = ({ to, icon, children, onClick }) => {
   return (
     <NavLink
       to={to}
+      onClick={onClick}
       className={({ isActive }) =>
-        `sidebar__link ${
-          isActive ? "sidebar__link--active" : ""
-        }`
+        `sidebar__link ${isActive ? "sidebar__link--active" : ""}`
       }
     >
       <span className="sidebar__icon">{icon}</span>
@@ -79,88 +79,132 @@ const SidebarLink = ({ to, icon, children }) => {
 
 export default function Sidebar() {
   const { currentUser, logout, openAuthModal } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function closeMenu() {
+    setIsMenuOpen(false);
+  }
 
   async function handleLogout() {
     try {
       await logout();
+      closeMenu();
     } catch (error) {
       console.error("Unable to log out:", error);
     }
   }
 
+  function handleLogin() {
+    openAuthModal();
+    closeMenu();
+  }
+
   return (
-    <aside className="sidebar">
-      <Link to="/" className="sidebar__logo">
-        <span className="sidebar__logo-icon">
-          <span className="sidebar__logo-page"></span>
-        </span>
+    <>
+      <button
+        type="button"
+        className="sidebar__menu-button"
+        onClick={() => setIsMenuOpen((previous) => !previous)}
+        aria-label="Toggle navigation menu"
+        aria-expanded={isMenuOpen}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-        <span>Summarist</span>
-      </Link>
+      {isMenuOpen && (
+        <button
+          type="button"
+          className="sidebar__overlay"
+          onClick={closeMenu}
+          aria-label="Close navigation menu"
+        />
+      )}
 
-      <nav className="sidebar__nav sidebar__nav--top">
-        <SidebarLink to="/for-you" icon={<HomeIcon />}>
-          For You
-        </SidebarLink>
-
-        <SidebarLink
-          to="/library"
-          icon={<BookmarkIcon />}
-        >
-          My Library
-        </SidebarLink>
-
-        <div className="sidebar__link sidebar__link--disabled">
-          <span className="sidebar__icon">
-            <HighlightIcon />
+      <aside className={`sidebar ${isMenuOpen ? "sidebar--open" : ""}`}>
+        <Link to="/" className="sidebar__logo" onClick={closeMenu}>
+          <span className="sidebar__logo-icon">
+            <span className="sidebar__logo-page"></span>
           </span>
-          <span>Highlights</span>
-        </div>
 
-        <SidebarLink to="/search" icon={<SearchIcon />}>
-          Search
-        </SidebarLink>
-      </nav>
+          <span>Summarist</span>
+        </Link>
 
-      <nav className="sidebar__nav sidebar__nav--bottom">
-        <SidebarLink
-          to="/settings"
-          icon={<SettingsIcon />}
-        >
-          Settings
-        </SidebarLink>
-
-        <div className="sidebar__link sidebar__link--disabled">
-          <span className="sidebar__icon">
-            <HelpIcon />
-          </span>
-          <span>Help &amp; Support</span>
-        </div>
-
-        {currentUser ? (
-          <button
-            type="button"
-            className="sidebar__link sidebar__button"
-            onClick={handleLogout}
+        <nav className="sidebar__nav sidebar__nav--top">
+          <SidebarLink
+            to="/for-you"
+            icon={<HomeIcon />}
+            onClick={closeMenu}
           >
-            <span className="sidebar__icon">
-              <LogoutIcon />
-            </span>
-            <span>Logout</span>
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="sidebar__link sidebar__button"
-            onClick={openAuthModal}
+            For You
+          </SidebarLink>
+
+          <SidebarLink
+            to="/library"
+            icon={<BookmarkIcon />}
+            onClick={closeMenu}
           >
+            My Library
+          </SidebarLink>
+
+          <div className="sidebar__link sidebar__link--disabled">
             <span className="sidebar__icon">
-              <LoginIcon />
+              <HighlightIcon />
             </span>
-            <span>Login</span>
-          </button>
-        )}
-      </nav>
-    </aside>
+            <span>Highlights</span>
+          </div>
+
+          <SidebarLink
+            to="/search"
+            icon={<SearchIcon />}
+            onClick={closeMenu}
+          >
+            Search
+          </SidebarLink>
+        </nav>
+
+        <nav className="sidebar__nav sidebar__nav--bottom">
+          <SidebarLink
+            to="/settings"
+            icon={<SettingsIcon />}
+            onClick={closeMenu}
+          >
+            Settings
+          </SidebarLink>
+
+          <div className="sidebar__link sidebar__link--disabled">
+            <span className="sidebar__icon">
+              <HelpIcon />
+            </span>
+            <span>Help &amp; Support</span>
+          </div>
+
+          {currentUser ? (
+            <button
+              type="button"
+              className="sidebar__link sidebar__button"
+              onClick={handleLogout}
+            >
+              <span className="sidebar__icon">
+                <LogoutIcon />
+              </span>
+              <span>Logout</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="sidebar__link sidebar__button"
+              onClick={handleLogin}
+            >
+              <span className="sidebar__icon">
+                <LoginIcon />
+              </span>
+              <span>Login</span>
+            </button>
+          )}
+        </nav>
+      </aside>
+    </>
   );
 }

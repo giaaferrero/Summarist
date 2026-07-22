@@ -133,46 +133,108 @@
   margin: 0;
 }
 
+.sidebar__menu-button {
+  display: none;
+}
+
+.sidebar__overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .sidebar {
+  .sidebar__menu-button {
     position: fixed;
-    bottom: 0;
-    top: auto;
-    flex-direction: row;
-    width: 100%;
-    height: 64px;
-    border-top: 1px solid #e6ebed;
-    border-right: none;
+    top: 16px;
+    left: 16px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e6ebed;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(3, 43, 65, 0.12);
+    cursor: pointer;
   }
 
-  .sidebar__logo,
-  .sidebar__link--disabled,
-  .sidebar__nav--bottom {
-    display: none;
+  .sidebar__menu-button span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #032b41;
+    border-radius: 999px;
+  }
+
+  .sidebar__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 29;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background-color: rgba(3, 43, 65, 0.35);
+    border: none;
+    cursor: pointer;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 100vh;
+    border-right: 1px solid #e6ebed;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 8px 0 24px rgba(3, 43, 65, 0.14);
+  }
+
+  .sidebar--open {
+    transform: translateX(0);
+  }
+
+  .sidebar__logo {
+    display: flex;
   }
 
   .sidebar__nav--top {
+    padding-top: 18px;
+  }
+
+  .sidebar__nav--bottom {
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    padding: 0;
+    margin-top: auto;
+    padding-bottom: 18px;
   }
 
   .sidebar__link {
-    justify-content: center;
-    min-height: 64px;
-    padding: 0;
+    justify-content: flex-start;
+    min-height: 56px;
+    padding: 0 20px;
   }
 
   .sidebar__link span:last-child {
-    display: none;
+    display: inline;
+  }
+
+  .sidebar__link--disabled {
+    display: flex;
   }
 
   .sidebar__link--active::before {
-    top: auto;
-    right: 0;
+    top: 0;
+    right: auto;
     bottom: 0;
-    width: auto;
-    height: 4px;
+    width: 4px;
+    height: auto;
   }
 }
